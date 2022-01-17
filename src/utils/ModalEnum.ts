@@ -1,0 +1,5 @@
+export enum ModalEnum {
+  LOGIN = "LOGIN",
+  FORGOT_PASSWORD = "FORGOT_PASSWORD",
+  RESET_PASSWORD = "RESET_PASSWORD",
+}
