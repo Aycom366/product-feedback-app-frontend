@@ -1,12 +1,13 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import { baseURL } from "../../utils";
 import { CommentObject, Feedback } from "../model";
 
 export const fetchFeedbacks = createAsyncThunk(
   "feedback/fetchFeedbacks",
   async () => {
     try {
-      const { data } = await axios.get("/api/feedback");
+      const { data } = await axios.get(`${baseURL}/api/feedback`);
       return data;
     } catch (error: any) {
       return error.rejectWithValue({ error: error.message });

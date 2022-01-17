@@ -14,6 +14,7 @@ import axios from "axios";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { currentModalContent } from "../../Redux/slices/settings";
+import { baseURL } from "../../utils";
 import { ModalEnum } from "../../utils/ModalEnum";
 import { ToastStatus } from "../../utils/ToastStatus";
 
@@ -46,7 +47,9 @@ const ForgotPassword = () => {
 
     try {
       setIsSending(true);
-      const { data } = await axios.post("/api/auth/forgot-password", { email });
+      const { data } = await axios.post(`${baseURL}/api/auth/forgot-password`, {
+        email,
+      });
       ToastMessage("Info", data.msg, ToastStatus.INFO, 9000);
     } catch (error: any) {
       ToastMessage("Error", error.response.data.msg, ToastStatus.ERROR);

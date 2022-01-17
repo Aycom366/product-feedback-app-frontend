@@ -30,6 +30,7 @@ import { useToast } from "@chakra-ui/react";
 import { logout } from "../../../Redux/slices/userSlice";
 import axios from "axios";
 import { sortedFeedback } from "../../../Redux/slices/feedbackSlice";
+import { baseURL } from "../../../utils";
 
 const Header = () => {
   interface Props {
@@ -39,7 +40,7 @@ const Header = () => {
 
   const Logout = async () => {
     try {
-      const { data } = await axios.post("/api/auth/logout");
+      const { data } = await axios.post(`${baseURL}/api/auth/logout`);
       dispatch(logout());
       toast({
         title: "Sucess",

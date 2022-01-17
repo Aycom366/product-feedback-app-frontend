@@ -16,7 +16,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { RootState } from "../Redux/store";
 import { AddFeedback } from "../Redux/model";
 import { Category } from "../utils/Category";
-import { Status } from "../utils";
+import { baseURL, Status } from "../utils";
 import SelectFieldStatus from "../components/SelectFieldStatus";
 
 const Edit = () => {
@@ -84,7 +84,10 @@ const Edit = () => {
 
     try {
       setIsSubmitting(true);
-      const { data } = await axios.patch(`/api/feedback/${id}`, formData);
+      const { data } = await axios.patch(
+        `${baseURL}/api/feedback/${id}`,
+        formData
+      );
       ToastMessage("Sucess", data.msg, ToastStatus.SUCCESS);
 
       dispatch(updateFeedback({ data: data.data, feedbackId: id }));
@@ -98,7 +101,7 @@ const Edit = () => {
   const deleteFeedback = async () => {
     try {
       setIsDeleting(true);
-      const { data } = await axios.delete(`/api/feedback/${id}`);
+      const { data } = await axios.delete(`${baseURL}/api/feedback/${id}`);
       ToastMessage("Sucess", data.msg, ToastStatus.SUCCESS);
       dispatch(removeFeedback({ feedbackId: id }));
       navigate("/");

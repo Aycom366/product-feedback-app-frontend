@@ -13,7 +13,7 @@ const Comment = ({ feed }: Feed) => {
     <Flex alignItems={"center"}>
       <Box as={BsFillChatFill} color={"white.500"} />
       <Text fontWeight={"500"} ml={2}>
-        {CountComment(feed.comment)}
+        {CountComment(feed?.comment)}
       </Text>
     </Flex>
   );

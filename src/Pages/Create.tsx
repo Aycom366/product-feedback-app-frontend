@@ -13,6 +13,7 @@ import { useDispatch } from "react-redux";
 import { addNewFeedback } from "../Redux/slices/feedbackSlice";
 import { useNavigate } from "react-router-dom";
 import { Category } from "../utils/Category";
+import { baseURL } from "../utils";
 
 const Create = () => {
   const dispatch = useDispatch();
@@ -59,7 +60,7 @@ const Create = () => {
     try {
       setIsSubmitting(true);
       const { data } = await axios.post(
-        "/api/feedback/create-feedback",
+        `${baseURL}/api/feedback/create-feedback`,
         formData
       );
       ToastMessage("Sucess", data.msg, ToastStatus.SUCCESS);

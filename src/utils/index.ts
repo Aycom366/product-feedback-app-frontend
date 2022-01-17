@@ -5,7 +5,7 @@ export const currentUserUpVoted = (
   currentUser: any
 ) => {
   if (upvote && upvote.length > 0) {
-    return upvote.some((up: UpvoteObject) =>
+    return upvote?.some((up: UpvoteObject) =>
       up.user.includes(currentUser.userId)
     );
   }
@@ -13,7 +13,7 @@ export const currentUserUpVoted = (
 };
 
 export const CountComment = (comment: any) => {
-  if (comment && comment.length > 0) {
+  if (comment && comment?.length > 0) {
     const noOfComment = comment?.reduce(
       (total: number, current: CommentObject) => {
         const subCount = current?.subcomment?.length;
@@ -58,3 +58,5 @@ export const checkColor = (feedbackStatus: string) => {
   if (FeedbackStatus.LIVE === feedbackStatus) return "#62BCFA";
   return "black";
 };
+
+export const baseURL = "https://product-feedback-mern-app.herokuapp.com";

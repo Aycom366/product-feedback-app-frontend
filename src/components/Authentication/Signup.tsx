@@ -14,6 +14,7 @@ import axios from "axios";
 import { currentUser } from "../../Redux/slices/userSlice";
 import { ToastStatus } from "../../utils/ToastStatus";
 import { useDispatch } from "react-redux";
+import { baseURL } from "../../utils";
 
 interface Props {
   onClose: () => void;
@@ -73,9 +74,12 @@ const Signup = ({ onClose }: Props) => {
 
   const responseSuccessGoogle = async (data: any) => {
     try {
-      const response: any = await axios.post("/api/auth/google-login", {
-        tokenId: data?.tokenId,
-      });
+      const response: any = await axios.post(
+        `${baseURL}/api/auth/google-login`,
+        {
+          tokenId: data?.tokenId,
+        }
+      );
       dispatch(currentUser(response.data.data));
       ToastMessage("Success", response.msg, ToastStatus.SUCCESS);
       onClose();

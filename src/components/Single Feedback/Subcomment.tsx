@@ -16,6 +16,7 @@ import { useDispatch } from "react-redux";
 import { ToastStatus } from "../../utils/ToastStatus";
 import { addSubComments } from "../../Redux/slices/feedbackSlice";
 import SubCommentHeader from "./SubCommentHeader";
+import { baseURL } from "../../utils";
 
 interface SubcommentInputProps {
   content: string;
@@ -86,12 +87,15 @@ const Subcomment = ({
 
     try {
       setisSubcommentAdding(true);
-      const { data } = await axios.post("/api/feedback/create-subcomment", {
-        commentId: comObj._id,
-        content: subcommentInput?.content,
-        senderId: user.userId,
-        replyingToId: comObj.subcomment[index].sender._id,
-      });
+      const { data } = await axios.post(
+        `${baseURL}/api/feedback/create-subcomment`,
+        {
+          commentId: comObj._id,
+          content: subcommentInput?.content,
+          senderId: user.userId,
+          replyingToId: comObj.subcomment[index].sender._id,
+        }
+      );
       dispatch(addSubComments(data));
       const newCom = [...subcommentArray];
       newCom[index].isReply = false;

@@ -16,6 +16,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { currentModalContent } from "../../Redux/slices/settings";
+import { baseURL } from "../../utils";
 import { ModalEnum } from "../../utils/ModalEnum";
 import { ToastStatus } from "../../utils/ToastStatus";
 
@@ -67,7 +68,7 @@ const ResetPassword = ({ email, token }: Props) => {
     try {
       setIsSending(true);
       const { data } = await axios.post(
-        "/api/auth/reset-password",
+        `${baseURL}/api/auth/reset-password`,
         resetPassword
       );
       ToastMessage("Success", data.msg, ToastStatus.SUCCESS, 9000);

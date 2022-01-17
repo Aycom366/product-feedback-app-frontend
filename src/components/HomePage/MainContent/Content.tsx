@@ -25,7 +25,9 @@ const Content = ({ activeFeedback }: ActiveFeedback) => {
       p={{ base: "1rem", sm: "1rem 0" }}
     >
       {activeFeedback.map((feed) => {
-        return <FeedbackContainer onOpen={onOpen} key={feed._id} feed={feed} />;
+        return (
+          <FeedbackContainer onOpen={onOpen} key={feed?._id} feed={feed} />
+        );
       })}
 
       {/* Modal wrapper component */}

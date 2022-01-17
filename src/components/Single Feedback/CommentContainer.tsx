@@ -21,6 +21,7 @@ import { RootState } from "../../Redux/store";
 import { ToastStatus } from "../../utils/ToastStatus";
 import axios from "axios";
 import { addSubComments } from "../../Redux/slices/feedbackSlice";
+import { baseURL } from "../../utils";
 
 interface CommentInputProps {
   content: string;
@@ -132,8 +133,8 @@ const CommentContainer = ({
       const { data } = await axios({
         method: commentsInput.isEdit ? "PATCH" : "POST",
         url: commentsInput.isEdit
-          ? `/api/feedback/update-comment`
-          : `/api/feedback/create-subcomment`,
+          ? `${baseURL}/api/feedback/update-comment`
+          : `${baseURL}/api/feedback/create-subcomment`,
         data: commentsInput.isEdit
           ? { commentId: com._id, content: commentsInput.content }
           : {

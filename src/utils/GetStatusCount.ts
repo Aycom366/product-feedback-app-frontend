@@ -11,7 +11,7 @@ export const GetStatusCount = (
   feedbackStatus: Status
 ) => {
   const count = feedback.reduce((prevVal: number, currVal: Feedback) => {
-    if (currVal.feedbackStatus === feedbackStatus) {
+    if (currVal?.feedbackStatus === feedbackStatus) {
       prevVal++;
     }
     return prevVal;
