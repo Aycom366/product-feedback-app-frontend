@@ -5,10 +5,10 @@ interface ButtonProps {
   hover_color?: string;
   h?: string;
   w?: string;
-  display?: Boolean;
+  display?: string;
   p?: string;
   bg?: string;
-  border?: Boolean;
+  border?: boolean;
   fontWeight?: string;
   fontSize?: string;
   br?: string;
@@ -22,7 +22,6 @@ export const Button = styled.button<ButtonProps>`
   height: ${(props) => props.h || "auto"};
   width: ${(props) => props.w || "auto"};
   display: ${(props) => props.display && "none"};
-  display: "flex";
   font-weight: ${(props) => props.fontWeight || "normal"};
   align-items: center;
   font-size: ${(props) => props.fontSize || "1rem"};

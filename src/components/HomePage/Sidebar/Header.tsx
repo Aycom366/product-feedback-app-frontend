@@ -33,7 +33,10 @@ const Header = ({ isSidebarActive, setIsSidebarActive }: IProps) => {
         </Text>
         <Text>Product Board</Text>
       </Flex>
-      <Button onClick={() => setIsSidebarActive(!isSidebarActive)} display>
+      <Button
+        onClick={() => setIsSidebarActive(!isSidebarActive)}
+        display="flex"
+      >
         {!isSidebarActive ? (
           <FaBars style={{ color: "white" }} />
         ) : (

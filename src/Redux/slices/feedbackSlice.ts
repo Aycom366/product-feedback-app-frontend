@@ -63,7 +63,6 @@ export const feedbackSlice = createSlice({
     },
     updateFeedback: (state, { payload }) => {
       const { feedbackId, data } = payload;
-      console.log(data);
       state.singleFeedback = data;
       state.activeFeedback = state.activeFeedback.map((feed) =>
         feed._id === feedbackId ? data : feed

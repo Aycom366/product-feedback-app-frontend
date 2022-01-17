@@ -157,7 +157,7 @@ const Login = ({ onClose }: Props) => {
       </Text>
 
       <GoogleLogin
-        clientId={`${process.env.REACT_APP_GOOGLE_CLIENT_ID}`}
+        clientId={`797788470062-a2rvvf71q36j7r35d77p80uqp8u9v2ja.apps.googleusercontent.com`}
         onSuccess={responseSuccessGoogle}
         onFailure={responseErrorGoogle}
         cookiePolicy={"single_host_origin"}
