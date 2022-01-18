@@ -13,13 +13,11 @@ import GoogleLogin from "react-google-login";
 import { ChangeEvent, useState } from "react";
 import { useToast } from "@chakra-ui/react";
 import { ToastStatus } from "../../utils/ToastStatus";
-import axios from "axios";
 import { currentUser } from "../../Redux/slices/userSlice";
 import { useDispatch } from "react-redux";
 import { currentModalContent } from "../../Redux/slices/settings";
 import { ModalEnum } from "../../utils/ModalEnum";
-import { baseURL } from "../../utils";
-axios.defaults.withCredentials = true;
+import { instance } from "../../utils";
 
 interface Props {
   onClose: () => void;
@@ -34,12 +32,9 @@ const Login = ({ onClose }: Props) => {
 
   const responseSuccessGoogle = async (data: any) => {
     try {
-      const response: any = await axios.post(
-        `${baseURL}/api/auth/google-login`,
-        {
-          tokenId: data?.tokenId,
-        }
-      );
+      const response: any = await instance.post(`/api/auth/google-login`, {
+        tokenId: data?.tokenId,
+      });
       dispatch(currentUser(response.data.data));
       ToastMessage("Success", response.msg, ToastStatus.SUCCESS);
       onClose();
@@ -86,7 +81,7 @@ const Login = ({ onClose }: Props) => {
 
     try {
       setIsSubmitting(true);
-      const { data } = await axios.post(`/api/auth/login`, formData);
+      const { data } = await instance.post(`/api/auth/login`, formData);
       dispatch(currentUser(data.data));
       ToastMessage("Success", "Login Successful", ToastStatus.SUCCESS);
       onClose();

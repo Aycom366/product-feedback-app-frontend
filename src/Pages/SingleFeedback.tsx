@@ -23,9 +23,8 @@ import {
   populateThroughApi,
 } from "../Redux/slices/feedbackSlice";
 import ModalWrapper from "../components/HomePage/MainContent/ModalWrapper";
-import axios from "axios";
 import CommentTextArea from "../components/Single Feedback/CommentTextArea";
-import { baseURL, CountComment } from "../utils";
+import { instance, CountComment } from "../utils";
 import { CommentObject } from "../Redux/model";
 import CommentContainer from "../components/Single Feedback/CommentContainer";
 const FeedbackContainer = React.lazy(
@@ -74,7 +73,7 @@ const SingleFeedback = () => {
     }
     try {
       setIsCommentAdding(true);
-      const { data } = await axios.post(`/api/feedback/create-comment`, {
+      const { data } = await instance.post(`/api/feedback/create-comment`, {
         feedbackId: singleFeedback._id,
         content: newComment,
         senderId: user.userId,
@@ -93,7 +92,7 @@ const SingleFeedback = () => {
     (async () => {
       dispatch(populateSingleFeedback(id));
       if (!singleFeedback._id) {
-        const { data } = await axios.get(`/api/feedback/${id}`);
+        const { data } = await instance.get(`/api/feedback/${id}`);
         dispatch(populateThroughApi(data.data));
       }
     })();

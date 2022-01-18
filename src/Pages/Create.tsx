@@ -8,12 +8,11 @@ import TextAreaField from "../components/TextAreaField";
 import FEEDBACK_EDIT_CREATE_BUTTON from "../components/FEEDBACK_EDIT_CREATE_BUTTON";
 import { useToast } from "@chakra-ui/react";
 import { ToastStatus } from "../utils/ToastStatus";
-import axios from "axios";
 import { useDispatch } from "react-redux";
 import { addNewFeedback } from "../Redux/slices/feedbackSlice";
 import { useNavigate } from "react-router-dom";
 import { Category } from "../utils/Category";
-import { baseURL } from "../utils";
+import { instance } from "../utils";
 
 const Create = () => {
   const dispatch = useDispatch();
@@ -59,7 +58,7 @@ const Create = () => {
 
     try {
       setIsSubmitting(true);
-      const { data } = await axios.post(
+      const { data } = await instance.post(
         `/api/feedback/create-feedback`,
         formData
       );

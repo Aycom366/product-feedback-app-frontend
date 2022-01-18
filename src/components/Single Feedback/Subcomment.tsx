@@ -11,12 +11,11 @@ import {
 import CommentTextArea from "./CommentTextArea";
 import { CommentObject, SubCommentObject } from "../../Redux/model";
 import { Button } from "../../styled";
-import axios from "axios";
 import { useDispatch } from "react-redux";
 import { ToastStatus } from "../../utils/ToastStatus";
 import { addSubComments } from "../../Redux/slices/feedbackSlice";
 import SubCommentHeader from "./SubCommentHeader";
-import { baseURL } from "../../utils";
+import { instance } from "../../utils";
 
 interface SubcommentInputProps {
   content: string;
@@ -87,7 +86,7 @@ const Subcomment = ({
 
     try {
       setisSubcommentAdding(true);
-      const { data } = await axios.post(`/api/feedback/create-subcomment`, {
+      const { data } = await instance.post(`/api/feedback/create-subcomment`, {
         commentId: comObj._id,
         content: subcommentInput?.content,
         senderId: user.userId,

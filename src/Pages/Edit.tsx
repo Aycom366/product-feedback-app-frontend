@@ -9,14 +9,13 @@ import TextAreaField from "../components/TextAreaField";
 import FEEDBACK_EDIT_CREATE_BUTTON from "../components/FEEDBACK_EDIT_CREATE_BUTTON";
 import { useToast } from "@chakra-ui/react";
 import { ToastStatus } from "../utils/ToastStatus";
-import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { removeFeedback, updateFeedback } from "../Redux/slices/feedbackSlice";
 import { useNavigate, useParams } from "react-router-dom";
 import { RootState } from "../Redux/store";
 import { AddFeedback } from "../Redux/model";
 import { Category } from "../utils/Category";
-import { baseURL, Status } from "../utils";
+import { instance, Status } from "../utils";
 import SelectFieldStatus from "../components/SelectFieldStatus";
 
 const Edit = () => {
@@ -84,7 +83,7 @@ const Edit = () => {
 
     try {
       setIsSubmitting(true);
-      const { data } = await axios.patch(`/api/feedback/${id}`, formData);
+      const { data } = await instance.patch(`/api/feedback/${id}`, formData);
       ToastMessage("Sucess", data.msg, ToastStatus.SUCCESS);
 
       dispatch(updateFeedback({ data: data.data, feedbackId: id }));
@@ -98,7 +97,7 @@ const Edit = () => {
   const deleteFeedback = async () => {
     try {
       setIsDeleting(true);
-      const { data } = await axios.delete(`${baseURL}/api/feedback/${id}`);
+      const { data } = await instance.delete(`/api/feedback/${id}`);
       ToastMessage("Sucess", data.msg, ToastStatus.SUCCESS);
       dispatch(removeFeedback({ feedbackId: id }));
       navigate("/");

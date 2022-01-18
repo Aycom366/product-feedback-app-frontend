@@ -11,11 +11,10 @@ import Comment from "./HomePage/MainContent/Comment";
 import UpVotes from "./HomePage/MainContent/UpVotes";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import axios from "axios";
 import { updateUpVote } from "../Redux/slices/feedbackSlice";
 import { Feedback } from "../Redux/model";
 import { RootState } from "../Redux/store";
-import { baseURL } from "../utils";
+import { instance } from "../utils";
 
 interface Props {
   onOpen: () => void;
@@ -45,7 +44,7 @@ const FeedbackContainer = ({ onOpen, feed, roadmap }: Props) => {
     }
 
     try {
-      const { data } = await axios.patch(`/api/feedback/upvote`, {
+      const { data } = await instance.patch(`/api/feedback/upvote`, {
         userId: user.userId,
         feedbackId,
       });

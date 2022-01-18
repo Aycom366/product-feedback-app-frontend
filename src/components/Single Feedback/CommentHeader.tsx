@@ -9,14 +9,13 @@ import {
   Spacer,
   Stack,
 } from "@chakra-ui/react";
-import axios from "axios";
 import { CommentObject } from "../../Redux/model";
 import { AiFillDelete, AiFillEdit } from "react-icons/ai";
 import { useSelector } from "react-redux";
 import { RootState } from "../../Redux/store";
 import { useDispatch } from "react-redux";
 import { removeComment } from "../../Redux/slices/feedbackSlice";
-import { baseURL } from "../../utils";
+import { instance } from "../../utils";
 
 interface CommentHeaderProps {
   com: CommentObject;
@@ -34,7 +33,7 @@ const CommentHeader = ({
 
   const handleDelete = async () => {
     try {
-      await axios.delete(`/api/feedback/delete-comment`, {
+      await instance.delete(`/api/feedback/delete-comment`, {
         data: {
           commentId: com._id,
         },

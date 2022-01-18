@@ -1,12 +1,11 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
 import { useLocation, Link } from "react-router-dom";
-import axios from "axios";
 import queryString from "query-string";
 import Header from "../components/Authentication/VerifyEmail";
 import { Box, Flex, Heading } from "@chakra-ui/layout";
 import { Button } from "@chakra-ui/button";
-import { baseURL } from "../utils";
+import { instance } from "../utils";
 
 const VerifyEmail = () => {
   const [error, setError] = useState({ status: false, msg: "" });
@@ -16,7 +15,7 @@ const VerifyEmail = () => {
 
   const verifyEmailToken = async () => {
     setLoading(true);
-    await axios
+    await instance
       .post(`/api/auth/verify-email`, {
         verificationToken: queryValues.token,
         email: queryValues.email,

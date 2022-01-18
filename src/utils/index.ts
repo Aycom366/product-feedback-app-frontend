@@ -1,3 +1,4 @@
+import axios from "axios";
 import { CommentObject, UpvoteObject } from "../Redux/model";
 
 export const currentUserUpVoted = (
@@ -59,4 +60,7 @@ export const checkColor = (feedbackStatus: string) => {
   return "black";
 };
 
-export const baseURL = "http://localhost:5000";
+export const instance = axios.create({
+  baseURL: "https://product-feedback-mern-app.herokuapp.com",
+  withCredentials: true,
+});

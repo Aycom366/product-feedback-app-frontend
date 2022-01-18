@@ -9,14 +9,13 @@ import {
   Spacer,
   Stack,
 } from "@chakra-ui/react";
-import axios from "axios";
 import { CommentObject, SubCommentObject } from "../../Redux/model";
 import { AiFillDelete } from "react-icons/ai";
 import { useSelector } from "react-redux";
 import { RootState } from "../../Redux/store";
 import { useDispatch } from "react-redux";
 import { removeSubComment } from "../../Redux/slices/feedbackSlice";
-import { baseURL } from "../../utils";
+import { instance } from "../../utils";
 
 interface CommentHeaderProps {
   subcom?: SubCommentObject;
@@ -34,13 +33,16 @@ const SubCommentHeader = ({
 
   const handleSubcommentDelete = async () => {
     try {
-      const { data } = await axios.delete(`/api/feedback/delete-subcomment`, {
-        data: {
-          commentId: comObj?._id,
-          subCommentId: subcom?._id,
-          feedbackId: comObj?.feedback,
-        },
-      });
+      const { data } = await instance.delete(
+        `/api/feedback/delete-subcomment`,
+        {
+          data: {
+            commentId: comObj?._id,
+            subCommentId: subcom?._id,
+            feedbackId: comObj?.feedback,
+          },
+        }
+      );
 
       dispatch(removeSubComment(data.data));
     } catch (error: any) {

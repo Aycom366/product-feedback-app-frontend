@@ -10,11 +10,10 @@ import {
 import GoogleLogin from "react-google-login";
 import { ChangeEvent, useState } from "react";
 import { useToast } from "@chakra-ui/react";
-import axios from "axios";
 import { currentUser } from "../../Redux/slices/userSlice";
 import { ToastStatus } from "../../utils/ToastStatus";
 import { useDispatch } from "react-redux";
-import { baseURL } from "../../utils";
+import { instance } from "../../utils";
 
 interface Props {
   onClose: () => void;
@@ -74,7 +73,7 @@ const Signup = ({ onClose }: Props) => {
 
   const responseSuccessGoogle = async (data: any) => {
     try {
-      const response: any = await axios.post(`/api/auth/google-login`, {
+      const response: any = await instance.post(`/api/auth/google-login`, {
         tokenId: data?.tokenId,
       });
       dispatch(currentUser(response.data.data));
@@ -104,7 +103,7 @@ const Signup = ({ onClose }: Props) => {
       formData.append("email", forms.email);
       formData.append("password", forms.password);
       formData.append("pic", forms.pic as File);
-      const { data } = await axios.post(`/api/auth/register`, formData);
+      const { data } = await instance.post(`/api/auth/register`, formData);
       ToastMessage("Info", data.msg, ToastStatus.INFO);
       ResetInputs();
       onClose();
@@ -186,6 +185,20 @@ const Signup = ({ onClose }: Props) => {
       <Text my={5} fontSize={"2xl"}>
         OR
       </Text>
+      <GoogleLogin
+        clientId={`797788470062-a2rvvf71q36j7r35d77p80uqp8u9v2ja.apps.googleusercontent.com`}
+        onSuccess={responseSuccessGoogle}
+        onFailure={responseErrorGoogle}
+        cookiePolicy={"single_host_origin"}
+        render={(renderProps) => (
+          <button
+            className="loginBtn loginBtn--google"
+            onClick={renderProps.onClick}
+          >
+            Login with Google
+          </button>
+        )}
+      />
     </Flex>
   );
 };
