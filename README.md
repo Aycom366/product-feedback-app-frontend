@@ -1,46 +1,89 @@
-# Getting Started with Create React App
+# Frontend Mentor - Product feedback app solution
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a solution to the [Product feedback app challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/product-feedback-app-wbvUYqjR6). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
 
-## Available Scripts
+## Table of contents
 
-In the project directory, you can run:
+- [Overview](#overview)
+  - [The challenge](#the-challenge)
+  - [Links](#links)
+- [My process](#my-process)
+  - [Built with](#built-with)
+  - [What I learned](#what-i-learned)
+  - [Continued development](#continued-development)
+- [Author](#author)
 
-### `npm start`
+## Overview
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### The challenge
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Users should be able to:
 
-### `npm test`
+- View the optimal layout for the app depending on their device's screen size
+- See hover states for all interactive elements on the page
+- Create, read, update, and delete product feedback requests
+- Receive form validations when trying to create/edit feedback requests
+- Sort suggestions by most/least upvotes and most/least comments
+- Filter suggestions by category
+- Add comments and replies to a product feedback request
+- Upvote product feedback requests
+- **Bonus**: Keep track of any changes, even after refreshing the browser (`localStorage` could be used for this if you're not building out a full-stack app)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Links
 
-### `npm run build`
+- Solution URL: [Add solution URL here](https://github.com/Aycom366/product-feedback-app-frontend)
+- Live Site URL: [Add live site URL here](https://product-feedback-app-frontend.vercel.app/)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## My process
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Built with
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Semantic HTML5 markup
+- CSS custom properties
+- [Chakra-UI](https://chakra-ui.com/) CSS library used
+- Mobile-first workflow
+- [React](https://reactjs.org/) - JS library
+- [Typescript](https://www.typescriptlang.org/) - Javascript typed language
+- [Redux-Toolkit](https://redux-toolkit.js.org/) - React state management library
+- [Styled Components](https://styled-components.com/) - For styles
+- [axios](https://axios-http.com/) - Making Http Requests
+- [Express](https://expressjs.com/) - Backend Framework used with nodejs
+- [Mongodb](https://www.mongodb.com/) - The database used for the app
+- [Mongoose](https://mongoosejs.com/) - Mongodb database framework used in conjunction with mongodb above.
 
-### `npm run eject`
+**Note: These are just examples. Delete this note and replace the list above with your own choices**
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### What I learned
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Am actually happy becuase am able to finish this project. Although there are obstacles met along the way(Bugs) but thanks to my friends and other web programmer people out there to help me. The main motive behind making this project is because I need to sharpen my backend API skills, and I really enjoy writing the backend code. It was fun and interesting, most importantly the google Login and email sending. I had to shift from using libraries like mailTrap and the likes coz i have to send emails real time. so with the help of gmail smtp. I was able to send real emails.
+The react google login package also aids my development in the Front side with React. The google login wont be possible if I hadn't used this package.
+I wish Fontend mentor introduces Advanced Guru project just like real world coz I think have dont all frontend mentor guru project.
+And most importantly, I used typescript for this project. yah!!!!!!!!!!!!!!!!!. I must say Typescript really really really helped me aid the development of this project on the frontside. I just enjoy the mad suggestions it also brings if i have forgotten the variable name I need to use in some other context in the application.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+```Typescript
+export interface Feedback {
+  _id?: string | any;
+  feedbackTitle?: string;
+  feedbackCategory?: string;
+  feedbackDetails?: string;
+  user?: UserInformation;
+  feedbackStatus?: string;
+  createdAt?: Date;
+  updatedAt?: Date;
+  comment?: Comment | any;
+  upvote?: Upvote | any;
+}
+```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+with the interface above, Typscript gives me suggestions of the Feedback property values if I need to use the Feedback Interface.
 
-## Learn More
+### Continued development
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- currently in my backend, the method of which am using to populate other collections is not satisfying. I learn that I can actually used the mongoose middleware for populating other collections rather that writing the populate functions everytime in my controllers
+- Also at the frontside, I'll be looking forware to add a theme switch. Dark and Light toggle.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Author
+
+- Website - [Temitayo](https://temitayo-portfolio.vercel.app/)
+- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/yourusername)
+- Twitter - [@bamigboyeayomi5](https://www.twitter.com/bamigboyeayomide5)
