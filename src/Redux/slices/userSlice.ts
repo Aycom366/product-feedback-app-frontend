@@ -5,7 +5,7 @@ import { baseURL } from "../../utils";
 
 export const getUser = createAsyncThunk("user/getUser", async () => {
   try {
-    const { data } = await axios.get(`${baseURL}/api/user/show-current-user`);
+    const { data } = await axios.get(`/api/user/show-current-user`);
     return data;
   } catch (error: any) {
     console.log("Error fetching users", error.response.data.msg);

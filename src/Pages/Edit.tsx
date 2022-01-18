@@ -84,10 +84,7 @@ const Edit = () => {
 
     try {
       setIsSubmitting(true);
-      const { data } = await axios.patch(
-        `${baseURL}/api/feedback/${id}`,
-        formData
-      );
+      const { data } = await axios.patch(`/api/feedback/${id}`, formData);
       ToastMessage("Sucess", data.msg, ToastStatus.SUCCESS);
 
       dispatch(updateFeedback({ data: data.data, feedbackId: id }));

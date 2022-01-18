@@ -45,7 +45,7 @@ const FeedbackContainer = ({ onOpen, feed, roadmap }: Props) => {
     }
 
     try {
-      const { data } = await axios.patch(`${baseURL}/api/feedback/upvote`, {
+      const { data } = await axios.patch(`/api/feedback/upvote`, {
         userId: user.userId,
         feedbackId,
       });

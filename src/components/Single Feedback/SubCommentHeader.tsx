@@ -34,16 +34,13 @@ const SubCommentHeader = ({
 
   const handleSubcommentDelete = async () => {
     try {
-      const { data } = await axios.delete(
-        `${baseURL}/api/feedback/delete-subcomment`,
-        {
-          data: {
-            commentId: comObj?._id,
-            subCommentId: subcom?._id,
-            feedbackId: comObj?.feedback,
-          },
-        }
-      );
+      const { data } = await axios.delete(`/api/feedback/delete-subcomment`, {
+        data: {
+          commentId: comObj?._id,
+          subCommentId: subcom?._id,
+          feedbackId: comObj?.feedback,
+        },
+      });
 
       dispatch(removeSubComment(data.data));
     } catch (error: any) {

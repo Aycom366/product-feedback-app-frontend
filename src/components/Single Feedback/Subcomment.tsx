@@ -87,15 +87,12 @@ const Subcomment = ({
 
     try {
       setisSubcommentAdding(true);
-      const { data } = await axios.post(
-        `${baseURL}/api/feedback/create-subcomment`,
-        {
-          commentId: comObj._id,
-          content: subcommentInput?.content,
-          senderId: user.userId,
-          replyingToId: comObj.subcomment[index].sender._id,
-        }
-      );
+      const { data } = await axios.post(`/api/feedback/create-subcomment`, {
+        commentId: comObj._id,
+        content: subcommentInput?.content,
+        senderId: user.userId,
+        replyingToId: comObj.subcomment[index].sender._id,
+      });
       dispatch(addSubComments(data));
       const newCom = [...subcommentArray];
       newCom[index].isReply = false;

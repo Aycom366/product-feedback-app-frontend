@@ -2,6 +2,7 @@
   "name": "frontend",
   "version": "0.1.0",
   "private": true,
+  "proxy": "https://product-feedback-mern-app.herokuapp.com",
   "dependencies": {
     "@chakra-ui/react": "^1.7.3",
     "@emotion/react": "^11",

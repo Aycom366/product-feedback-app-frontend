@@ -17,7 +17,7 @@ const VerifyEmail = () => {
   const verifyEmailToken = async () => {
     setLoading(true);
     await axios
-      .post(`${baseURL}/api/auth/verify-email`, {
+      .post(`/api/auth/verify-email`, {
         verificationToken: queryValues.token,
         email: queryValues.email,
       })

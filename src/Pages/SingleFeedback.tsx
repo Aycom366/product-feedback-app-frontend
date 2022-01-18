@@ -74,14 +74,11 @@ const SingleFeedback = () => {
     }
     try {
       setIsCommentAdding(true);
-      const { data } = await axios.post(
-        `${baseURL}/api/feedback/create-comment`,
-        {
-          feedbackId: singleFeedback._id,
-          content: newComment,
-          senderId: user.userId,
-        }
-      );
+      const { data } = await axios.post(`/api/feedback/create-comment`, {
+        feedbackId: singleFeedback._id,
+        content: newComment,
+        senderId: user.userId,
+      });
       dispatch(addComments(data));
       dispatch(populateSingleFeedback(id));
       setNewComment("");
@@ -96,7 +93,7 @@ const SingleFeedback = () => {
     (async () => {
       dispatch(populateSingleFeedback(id));
       if (!singleFeedback._id) {
-        const { data } = await axios.get(`${baseURL}/api/feedback/${id}`);
+        const { data } = await axios.get(`/api/feedback/${id}`);
         dispatch(populateThroughApi(data.data));
       }
     })();

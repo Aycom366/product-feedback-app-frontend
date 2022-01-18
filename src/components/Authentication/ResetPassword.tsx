@@ -68,7 +68,7 @@ const ResetPassword = ({ email, token }: Props) => {
     try {
       setIsSending(true);
       const { data } = await axios.post(
-        `${baseURL}/api/auth/reset-password`,
+        `/api/auth/reset-password`,
         resetPassword
       );
       ToastMessage("Success", data.msg, ToastStatus.SUCCESS, 9000);

@@ -40,7 +40,7 @@ const Header = () => {
 
   const Logout = async () => {
     try {
-      const { data } = await axios.post(`${baseURL}/api/auth/logout`);
+      const { data } = await axios.post(`/api/auth/logout`);
       dispatch(logout());
       toast({
         title: "Sucess",

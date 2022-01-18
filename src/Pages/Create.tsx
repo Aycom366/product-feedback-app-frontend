@@ -60,7 +60,7 @@ const Create = () => {
     try {
       setIsSubmitting(true);
       const { data } = await axios.post(
-        `${baseURL}/api/feedback/create-feedback`,
+        `/api/feedback/create-feedback`,
         formData
       );
       ToastMessage("Sucess", data.msg, ToastStatus.SUCCESS);

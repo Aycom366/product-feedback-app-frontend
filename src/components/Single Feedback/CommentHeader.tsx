@@ -34,7 +34,7 @@ const CommentHeader = ({
 
   const handleDelete = async () => {
     try {
-      await axios.delete(`${baseURL}/api/feedback/delete-comment`, {
+      await axios.delete(`/api/feedback/delete-comment`, {
         data: {
           commentId: com._id,
         },

@@ -133,8 +133,8 @@ const CommentContainer = ({
       const { data } = await axios({
         method: commentsInput.isEdit ? "PATCH" : "POST",
         url: commentsInput.isEdit
-          ? `${baseURL}/api/feedback/update-comment`
-          : `${baseURL}/api/feedback/create-subcomment`,
+          ? `/api/feedback/update-comment`
+          : `/api/feedback/create-subcomment`,
         data: commentsInput.isEdit
           ? { commentId: com._id, content: commentsInput.content }
           : {

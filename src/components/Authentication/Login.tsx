@@ -33,12 +33,9 @@ const Login = ({ onClose }: Props) => {
 
   const responseSuccessGoogle = async (data: any) => {
     try {
-      const response: any = await axios.post(
-        `${baseURL}/api/auth/google-login`,
-        {
-          tokenId: data?.tokenId,
-        }
-      );
+      const response: any = await axios.post(`/api/auth/google-login`, {
+        tokenId: data?.tokenId,
+      });
       dispatch(currentUser(response.data.data));
       ToastMessage("Success", response.msg, ToastStatus.SUCCESS);
       onClose();
@@ -85,7 +82,7 @@ const Login = ({ onClose }: Props) => {
 
     try {
       setIsSubmitting(true);
-      const { data } = await axios.post(`${baseURL}/api/auth/login`, formData);
+      const { data } = await axios.post(`/api/auth/login`, formData);
       dispatch(currentUser(data.data));
       ToastMessage("Success", "Login Successful", ToastStatus.SUCCESS);
       onClose();

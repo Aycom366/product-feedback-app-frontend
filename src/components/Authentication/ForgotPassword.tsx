@@ -47,7 +47,7 @@ const ForgotPassword = () => {
 
     try {
       setIsSending(true);
-      const { data } = await axios.post(`${baseURL}/api/auth/forgot-password`, {
+      const { data } = await axios.post(`/api/auth/forgot-password`, {
         email,
       });
       ToastMessage("Info", data.msg, ToastStatus.INFO, 9000);

@@ -74,12 +74,9 @@ const Signup = ({ onClose }: Props) => {
 
   const responseSuccessGoogle = async (data: any) => {
     try {
-      const response: any = await axios.post(
-        `${baseURL}/api/auth/google-login`,
-        {
-          tokenId: data?.tokenId,
-        }
-      );
+      const response: any = await axios.post(`/api/auth/google-login`, {
+        tokenId: data?.tokenId,
+      });
       dispatch(currentUser(response.data.data));
       ToastMessage("Success", response.msg, ToastStatus.SUCCESS);
       onClose();
@@ -107,7 +104,7 @@ const Signup = ({ onClose }: Props) => {
       formData.append("email", forms.email);
       formData.append("password", forms.password);
       formData.append("pic", forms.pic as File);
-      const { data } = await axios.post("/api/auth/register", formData);
+      const { data } = await axios.post(`/api/auth/register`, formData);
       ToastMessage("Info", data.msg, ToastStatus.INFO);
       ResetInputs();
       onClose();
@@ -189,7 +186,6 @@ const Signup = ({ onClose }: Props) => {
       <Text my={5} fontSize={"2xl"}>
         OR
       </Text>
-      
     </Flex>
   );
 };
