@@ -189,20 +189,7 @@ const Signup = ({ onClose }: Props) => {
       <Text my={5} fontSize={"2xl"}>
         OR
       </Text>
-      <GoogleLogin
-        clientId={`797788470062-a2rvvf71q36j7r35d77p80uqp8u9v2ja.apps.googleusercontent.com`}
-        onSuccess={responseSuccessGoogle}
-        onFailure={responseErrorGoogle}
-        cookiePolicy={"single_host_origin"}
-        render={(renderProps) => (
-          <button
-            className="loginBtn loginBtn--google"
-            onClick={renderProps.onClick}
-          >
-            Signup with Google
-          </button>
-        )}
-      />
+      
     </Flex>
   );
 };
