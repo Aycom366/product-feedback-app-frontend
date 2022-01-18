@@ -33,9 +33,12 @@ const Login = ({ onClose }: Props) => {
 
   const responseSuccessGoogle = async (data: any) => {
     try {
-      const response: any = await axios.post("/api/auth/google-login", {
-        tokenId: data?.tokenId,
-      });
+      const response: any = await axios.post(
+        `${baseURL}/api/auth/google-login`,
+        {
+          tokenId: data?.tokenId,
+        }
+      );
       dispatch(currentUser(response.data.data));
       ToastMessage("Success", response.msg, ToastStatus.SUCCESS);
       onClose();
