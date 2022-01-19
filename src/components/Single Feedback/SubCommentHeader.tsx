@@ -15,7 +15,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../Redux/store";
 import { useDispatch } from "react-redux";
 import { removeSubComment } from "../../Redux/slices/feedbackSlice";
-import { instance } from "../../utils";
+import axios from "axios";
 
 interface CommentHeaderProps {
   subcom?: SubCommentObject;
@@ -33,16 +33,13 @@ const SubCommentHeader = ({
 
   const handleSubcommentDelete = async () => {
     try {
-      const { data } = await instance.delete(
-        `/api/feedback/delete-subcomment`,
-        {
-          data: {
-            commentId: comObj?._id,
-            subCommentId: subcom?._id,
-            feedbackId: comObj?.feedback,
-          },
-        }
-      );
+      const { data } = await axios.delete(`/api/feedback/delete-subcomment`, {
+        data: {
+          commentId: comObj?._id,
+          subCommentId: subcom?._id,
+          feedbackId: comObj?.feedback,
+        },
+      });
 
       dispatch(removeSubComment(data.data));
     } catch (error: any) {

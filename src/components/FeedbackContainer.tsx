@@ -14,7 +14,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { updateUpVote } from "../Redux/slices/feedbackSlice";
 import { Feedback } from "../Redux/model";
 import { RootState } from "../Redux/store";
-import { instance } from "../utils";
+import axios from "axios";
 
 interface Props {
   onOpen: () => void;
@@ -44,7 +44,7 @@ const FeedbackContainer = ({ onOpen, feed, roadmap }: Props) => {
     }
 
     try {
-      const { data } = await instance.patch(`/api/feedback/upvote`, {
+      const { data } = await axios.patch(`/api/feedback/upvote`, {
         userId: user.userId,
         feedbackId,
       });

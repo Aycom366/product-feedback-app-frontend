@@ -10,10 +10,10 @@ import {
   Text,
   useToast,
 } from "@chakra-ui/react";
+import axios from "axios";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { currentModalContent } from "../../Redux/slices/settings";
-import { instance } from "../../utils";
 import { ModalEnum } from "../../utils/ModalEnum";
 import { ToastStatus } from "../../utils/ToastStatus";
 
@@ -46,7 +46,7 @@ const ForgotPassword = () => {
 
     try {
       setIsSending(true);
-      const { data } = await instance.post(`/api/auth/forgot-password`, {
+      const { data } = await axios.post(`/api/auth/forgot-password`, {
         email,
       });
       ToastMessage("Info", data.msg, ToastStatus.INFO, 9000);

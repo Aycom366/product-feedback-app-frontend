@@ -15,7 +15,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../Redux/store";
 import { useDispatch } from "react-redux";
 import { removeComment } from "../../Redux/slices/feedbackSlice";
-import { instance } from "../../utils";
+import axios from "axios";
 
 interface CommentHeaderProps {
   com: CommentObject;
@@ -33,7 +33,7 @@ const CommentHeader = ({
 
   const handleDelete = async () => {
     try {
-      await instance.delete(`/api/feedback/delete-comment`, {
+      await axios.delete(`/api/feedback/delete-comment`, {
         data: {
           commentId: com._id,
         },

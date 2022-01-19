@@ -17,7 +17,6 @@ import { currentUser } from "../../Redux/slices/userSlice";
 import { useDispatch } from "react-redux";
 import { currentModalContent } from "../../Redux/slices/settings";
 import { ModalEnum } from "../../utils/ModalEnum";
-import { instance } from "../../utils";
 import axios from "axios";
 
 interface Props {
@@ -82,9 +81,7 @@ const Login = ({ onClose }: Props) => {
 
     try {
       setIsSubmitting(true);
-      const { data } = await instance.post(`/api/auth/login`, formData, {
-        withCredentials: true,
-      });
+      const { data } = await axios.post(`/api/auth/login`, formData);
       dispatch(currentUser(data.data));
       ToastMessage("Success", "Login Successful", ToastStatus.SUCCESS);
       onClose();

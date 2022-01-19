@@ -11,11 +11,11 @@ import {
   useToast,
   Checkbox,
 } from "@chakra-ui/react";
+import axios from "axios";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { currentModalContent } from "../../Redux/slices/settings";
-import { instance } from "../../utils";
 import { ModalEnum } from "../../utils/ModalEnum";
 import { ToastStatus } from "../../utils/ToastStatus";
 
@@ -66,7 +66,7 @@ const ResetPassword = ({ email, token }: Props) => {
 
     try {
       setIsSending(true);
-      const { data } = await instance.post(
+      const { data } = await axios.post(
         `/api/auth/reset-password`,
         resetPassword
       );

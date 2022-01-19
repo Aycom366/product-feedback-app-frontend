@@ -15,7 +15,7 @@ import { useDispatch } from "react-redux";
 import { ToastStatus } from "../../utils/ToastStatus";
 import { addSubComments } from "../../Redux/slices/feedbackSlice";
 import SubCommentHeader from "./SubCommentHeader";
-import { instance } from "../../utils";
+import axios from "axios";
 
 interface SubcommentInputProps {
   content: string;
@@ -86,7 +86,7 @@ const Subcomment = ({
 
     try {
       setisSubcommentAdding(true);
-      const { data } = await instance.post(`/api/feedback/create-subcomment`, {
+      const { data } = await axios.post(`/api/feedback/create-subcomment`, {
         commentId: comObj._id,
         content: subcommentInput?.content,
         senderId: user.userId,

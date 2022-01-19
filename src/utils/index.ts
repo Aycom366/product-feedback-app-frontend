@@ -60,7 +60,7 @@ export const checkColor = (feedbackStatus: string) => {
   return "black";
 };
 
-export const instance = axios.create({
-  baseURL: "https://product-feedback-mern-app.herokuapp.com",
-  withCredentials: true,
-});
+// export const instance = axios.create({
+//   baseURL: "https://product-feedback-mern-app.herokuapp.com",
+//   withCredentials: true,
+// });

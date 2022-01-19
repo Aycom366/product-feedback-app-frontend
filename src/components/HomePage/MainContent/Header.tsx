@@ -29,7 +29,7 @@ import DropDown from "../../DropDown";
 import { useToast } from "@chakra-ui/react";
 import { logout } from "../../../Redux/slices/userSlice";
 import { sortedFeedback } from "../../../Redux/slices/feedbackSlice";
-import { instance } from "../../../utils";
+import axios from "axios";
 
 const Header = () => {
   interface Props {
@@ -39,7 +39,7 @@ const Header = () => {
 
   const Logout = async () => {
     try {
-      const { data } = await instance.post(`/api/auth/logout`);
+      const { data } = await axios.post(`/api/auth/logout`);
       dispatch(logout());
       toast({
         title: "Sucess",

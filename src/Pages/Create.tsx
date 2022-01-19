@@ -12,7 +12,7 @@ import { useDispatch } from "react-redux";
 import { addNewFeedback } from "../Redux/slices/feedbackSlice";
 import { useNavigate } from "react-router-dom";
 import { Category } from "../utils/Category";
-import { instance } from "../utils";
+import axios from "axios";
 
 const Create = () => {
   const dispatch = useDispatch();
@@ -58,7 +58,7 @@ const Create = () => {
 
     try {
       setIsSubmitting(true);
-      const { data } = await instance.post(
+      const { data } = await axios.post(
         `/api/feedback/create-feedback`,
         formData
       );

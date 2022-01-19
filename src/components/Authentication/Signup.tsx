@@ -13,7 +13,7 @@ import { useToast } from "@chakra-ui/react";
 import { currentUser } from "../../Redux/slices/userSlice";
 import { ToastStatus } from "../../utils/ToastStatus";
 import { useDispatch } from "react-redux";
-import { instance } from "../../utils";
+import axios from "axios";
 
 interface Props {
   onClose: () => void;
@@ -73,7 +73,7 @@ const Signup = ({ onClose }: Props) => {
 
   const responseSuccessGoogle = async (data: any) => {
     try {
-      const response: any = await instance.post(`/api/auth/google-login`, {
+      const response: any = await axios.post(`/api/auth/google-login`, {
         tokenId: data?.tokenId,
       });
       dispatch(currentUser(response.data.data));
@@ -103,7 +103,7 @@ const Signup = ({ onClose }: Props) => {
       formData.append("email", forms.email);
       formData.append("password", forms.password);
       formData.append("pic", forms.pic as File);
-      const { data } = await instance.post(`/api/auth/register`, formData);
+      const { data } = await axios.post(`/api/auth/register`, formData);
       ToastMessage("Info", data.msg, ToastStatus.INFO);
       ResetInputs();
       onClose();

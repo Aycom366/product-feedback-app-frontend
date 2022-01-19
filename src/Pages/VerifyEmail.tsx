@@ -5,7 +5,7 @@ import queryString from "query-string";
 import Header from "../components/Authentication/VerifyEmail";
 import { Box, Flex, Heading } from "@chakra-ui/layout";
 import { Button } from "@chakra-ui/button";
-import { instance } from "../utils";
+import axios from "axios";
 
 const VerifyEmail = () => {
   const [error, setError] = useState({ status: false, msg: "" });
@@ -15,7 +15,7 @@ const VerifyEmail = () => {
 
   const verifyEmailToken = async () => {
     setLoading(true);
-    await instance
+    await axios
       .post(`/api/auth/verify-email`, {
         verificationToken: queryValues.token,
         email: queryValues.email,

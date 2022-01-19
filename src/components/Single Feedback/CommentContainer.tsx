@@ -20,7 +20,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../../Redux/store";
 import { ToastStatus } from "../../utils/ToastStatus";
 import { addSubComments } from "../../Redux/slices/feedbackSlice";
-import { instance } from "../../utils";
+import axios from "axios";
 
 interface CommentInputProps {
   content: string;
@@ -129,7 +129,7 @@ const CommentContainer = ({
     try {
       commentsInput.isEdit ? setIsEditing(true) : setisSubcommentAdding(false);
 
-      const { data } = await instance({
+      const { data } = await axios({
         method: commentsInput.isEdit ? "PATCH" : "POST",
         url: commentsInput.isEdit
           ? `/api/feedback/update-comment`
