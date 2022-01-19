@@ -1,3 +1,4 @@
-/api/* https://product-feedback-mern-app.herokuapp.com/:splat 200
+
+/api/*  https://product-feedback-mern-app.herokuapp.com/api/:splat  200
 
 /* /index.html 200
