@@ -51,7 +51,7 @@ const CommentHeader = ({
   return (
     <HStack
       overflowX={"auto"}
-      pb={"1rem"}
+      pb={"0.5rem"}
       h="100%"
       alignItems={"center"}
       w="100%"
