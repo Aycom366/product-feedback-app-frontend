@@ -186,7 +186,7 @@ const Signup = ({ onClose }: Props) => {
         OR
       </Text>
       <GoogleLogin
-        clientId={`797788470062-a2rvvf71q36j7r35d77p80uqp8u9v2ja.apps.googleusercontent.com`}
+        clientId={`${process.env.REACT_APP_GOOGLE_CLIENT_ID}`}
         onSuccess={responseSuccessGoogle}
         onFailure={responseErrorGoogle}
         cookiePolicy={"single_host_origin"}
