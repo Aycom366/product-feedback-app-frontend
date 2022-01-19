@@ -5,7 +5,7 @@ import axios from "axios";
 
 export const getUser = createAsyncThunk("user/getUser", async () => {
   try {
-    const { data } = await axios.get(`/api/user/show-current-user`, {
+    const { data } = await instance.get(`/api/user/show-current-user`, {
       withCredentials: true,
     });
     return data;

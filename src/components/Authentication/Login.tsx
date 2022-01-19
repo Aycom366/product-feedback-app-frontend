@@ -82,7 +82,7 @@ const Login = ({ onClose }: Props) => {
 
     try {
       setIsSubmitting(true);
-      const { data } = await axios.post(`/api/auth/login`, formData, {
+      const { data } = await instance.post(`/api/auth/login`, formData, {
         withCredentials: true,
       });
       dispatch(currentUser(data.data));
