@@ -61,6 +61,6 @@ export const checkColor = (feedbackStatus: string) => {
 };
 
 export const instance = axios.create({
-  baseURL: "https://product-feedback-mern-app.herokuapp.com",
+  baseURL: "",
   withCredentials: true,
 });

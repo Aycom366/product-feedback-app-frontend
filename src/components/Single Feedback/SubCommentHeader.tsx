@@ -55,7 +55,14 @@ const SubCommentHeader = ({
   };
 
   return (
-    <HStack h="100%" alignItems={"center"} w="100%" as="header">
+    <HStack
+      h="100%"
+      overflowX={"auto"}
+      pb={"1rem"}
+      alignItems={"center"}
+      w="100%"
+      as="header"
+    >
       <Flex alignItems={"center"} w="100%">
         <Avatar
           src={subcom?.sender?.pic}

@@ -1,0 +1,12 @@
+{
+  "rewrites": [
+    {
+      "source": "/api/:path*",
+      "destination": "https://product-feedback-mern-app.herokuapp.com/:path*"
+    },
+    {
+      "source": "/api/:path*/",
+      "destination": "https://product-feedback-mern-app.herokuapp.com/:path*/"
+    }
+  ]
+}

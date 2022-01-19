@@ -18,6 +18,7 @@ import { useDispatch } from "react-redux";
 import { currentModalContent } from "../../Redux/slices/settings";
 import { ModalEnum } from "../../utils/ModalEnum";
 import { instance } from "../../utils";
+import axios from "axios";
 
 interface Props {
   onClose: () => void;
@@ -32,7 +33,7 @@ const Login = ({ onClose }: Props) => {
 
   const responseSuccessGoogle = async (data: any) => {
     try {
-      const response: any = await instance.post(`/api/auth/google-login`, {
+      const response: any = await axios.post(`/api/auth/google-login`, {
         tokenId: data?.tokenId,
       });
       dispatch(currentUser(response.data.data));
@@ -81,7 +82,7 @@ const Login = ({ onClose }: Props) => {
 
     try {
       setIsSubmitting(true);
-      const { data } = await instance.post(`/api/auth/login`, formData);
+      const { data } = await axios.post(`/api/auth/login`, formData);
       dispatch(currentUser(data.data));
       ToastMessage("Success", "Login Successful", ToastStatus.SUCCESS);
       onClose();

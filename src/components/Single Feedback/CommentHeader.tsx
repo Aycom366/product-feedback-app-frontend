@@ -49,7 +49,14 @@ const CommentHeader = ({
   };
 
   return (
-    <HStack h="100%" alignItems={"center"} w="100%" as="header">
+    <HStack
+      overflowX={"auto"}
+      pb={"1rem"}
+      h="100%"
+      alignItems={"center"}
+      w="100%"
+      as="header"
+    >
       <Flex alignItems={"center"} w="100%">
         <Avatar
           src={com.sender.pic}
