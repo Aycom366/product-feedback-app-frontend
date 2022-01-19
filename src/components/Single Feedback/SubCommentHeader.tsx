@@ -55,7 +55,7 @@ const SubCommentHeader = ({
     <HStack
       h="100%"
       overflowX={"auto"}
-      pb={"1rem"}
+      pb={"0.5rem"}
       alignItems={"center"}
       w="100%"
       as="header"
